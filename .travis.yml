@@ -1,0 +1,35 @@
+language: java
+jdk:
+  - openjdk8
+
+## Build and verify
+install:
+  mvn clean install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
+
+script:
+  mvn clean verify -DskipTests=true -Dmaven.javadoc.skip=false -Dgpg.skip -B -U
+
+## Only build email-spring-boot-starter
+before_deploy:
+  - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
+  - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
+  - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
+  - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
+  - mvn --settings .settings.xml clean deploy -DskipTests=false -Dmaven.javadoc.skip=false -B -U
+
+deploy:
+  provider: releases
+  api_key:
+    secure: A7WPjf+dkK4v7C9sCK4hItR2oA1/mSiwiAa+NfHqcirVWjTnsu06S3dRIIMnU73wjrnO7MvtxNIy4mbDHWaJW9Rb856pC28x9kmRH9rw2Ey43EgWJEjIeCKZvgV+GWMbZ13tKUK2rdebgOQKequH93YiK27VyC4jwEvsDxQTcblOIx+oG55x6obVXAu0Dh2pDRpfrN5gHxvjZOboV3eYvMIHdVONbJiNP0mhHyaXBzgeautz+2veHp5E/VHDndAcqQrbEJA3fpSXGzLjPob1vTb+powIyEad1ahKvvUsGngieRxFkcChX12pEQP5shK7DlMGmL2DVUZK0CuPQp10I/ulqPh39FKx/LvnYzUkVz6GxU1HlMRTPZBVsSnz/xjIFmv4BdJ/CCc/mnIwz4f/qDY9c8mxBAfFz5k/DCM67oMjTaBY0UvxqxAXLTHXZVuEE3zF87rZNaT37IfIwxz3j1FFGlrk0sK7kuwUC6PGROOVgJQ68egi5UDUwPaGx8gFNyRyjRz1aetIlig3CLz79sH8ByY9vgVp7tTC3zEIrEXeLvHvnAD1Ju02EO1c+au042Umd3j3rjvoWJH2ogH1+bJJtZkFEyD1sKMM7Wccm1edvSmthvYNGn0blbzSJwaDGKtbTj1MauR+R4rzXT9DSL2HEU4pdtM3i7Rm9vribDI=
+  file:
+    - "target/twilio-spring-boot-starter-$project_version.jar"
+    - "target/twilio-spring-boot-starter-$project_version-javadoc.jar"
+    - "target/twilio-spring-boot-starter-$project_version-sources.jar"
+  skip_cleanup: true
+  on:
+    tags: true
+    repo: 57blocks/twilio-spring-boot-starter
+
+cache:
+  directories:
+    - ~/.m2/repository
