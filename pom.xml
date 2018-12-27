@@ -7,7 +7,7 @@
 
   <groupId>io.57blocks</groupId>
   <artifactId>twilio-spring-boot-starter</artifactId>
-  <version>0.1.1-SNAPSHOT</version>
+  <version>0.1.1</version>
   <packaging>jar</packaging>
 
   <name>twilio-spring-boot-starter</name>
