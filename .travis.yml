@@ -35,7 +35,7 @@ notifications:
   slack:
     on_pull_requests: false
     rooms:
-      secure: XcJQNlXiuwnpUnO6QjY+vtAsbgcZuLGWcBcfsFTo7Fco/bj3y+ECa/hnRuElGHRxh4GarsQKFp9+OTrFcWlXVAnmDNtLebvlnxL5llSuhth88YOotEkjcc1IQgd0hLHjYTvVLrCFF5QD+tKfbPzPpdGZ60csU9bS+VVfWCJn/T3s/eyKvJrW1e1fWoUf/MfKhp/sqlJcceVlgzHaHRREbJlka5nju9WbfJCUIolyTR+U+kaaPfAwzVdum5X6g5Dc4Egu+8nRudcu7YPN9R7xbuV3VEizfDhAiOPBHbS4xKzCtR+lJpAjrJEvyR6yG0xPH+iMo5v97tTv1jbLJAoR8QyMsNHcBlrCalzOfZIs6gi3o06IiksRlAvZgbj8dEaxXsQajZS6XLLUZYzonUy+BLfAtVbqKg6TczmEbpYbt6jLm0yCnhAFYugZq8acWeWUdYXn2TdPs5O5LA1/pRJpFz8Mic78fJW5q4W6jsulHz73MnDQUeVWoOzmlauGICVsqOd67xz/CfjJLdUYfB/xnAiPjorODKHoWJz4Tl5tULxKQ6gv3saDoeqNWZFbA/49fsLOphGca6lamKWfCXQZs+3XFFTcEaQyyvyE31A4hwo0zU9VQKOeLnVe/QAHpmrD3OwqfxczauX4zO3JOb1woynCqinh+NUSxTrdVHogjAo=
+      secure: Z29yKbFYR7JquKd72MF44wVmYsRaWx0I1CWqEbkUAOc9s6FsNlpW3lUATMm937L7NogOs3qjbH1nDUwutz28KJNIX9kDh53nMbirMN9tJc3m/LjAEBA0TnNIhQisWppqKGHCi5lgI/wGguoe4Y83h7JbjZ6bvnKnErExPZjx/EHiOs5v4/y7a9Eh/IvP6mvaaT9NDZ0ec4oa7B6A/iAxz5oHfODNq2eAGtfAPSbNThdliQLdPbORXjmJpGiCpZQ/lkNGyMct/7h4f0UaF4Qdozq0pq7cWFkLmBO9UsKrb/Z/jSf0eD7NU+P/otZLFGcAIxNId2WrhJ6qSevnLaebYFUwluXtY/hUEzy/WtFbStNxIC4HcW/AIL1aMI9D7TltUQGQLukiNMkWfowxuT0/rOvmfYfco442pd6mFy03Z2QBzsSwZsaVZml7bd/DemlbMwSNtUht1z2QNbMZujNHQPGLXVwuEqou32z/AbfZRaz/SZnCY4fxtKrsI8/033RkZFkxAxN10sFPaPIYAsSa/aDbddyA2W5BjAdKvllIW0epe/AlI8IuUaIYdkuGTvUC3+YTdg4HpR4I6dNYTwzZC8Wpu+b61xAV4Fj7PJdGqSnbdHE0g36cNZq8S1kkfa6FZ8gNXZAk77Awle9YFqVPEY1CW4cUzuXuGRwJAT5l1g8=
     template:
       - "Repo `%{repository_slug}` *%{result}* build (<%{build_url}|#%{build_number}>) for commit (<%{compare_url}|%{commit}>) on branch `%{branch}` by %{author}."
       - "Execution time: *%{duration}*"
